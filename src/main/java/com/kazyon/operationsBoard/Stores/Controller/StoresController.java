@@ -18,6 +18,11 @@ import java.util.Map;
 @RestController
 @RequestMapping("/v1/stores")
 @RequiredArgsConstructor
+@CrossOrigin(origins ={"http://localhost:4200/", "https://legalsystem.netlify.app/"} ,
+        methods = {RequestMethod.GET,RequestMethod.DELETE,
+                RequestMethod.PUT,RequestMethod.HEAD,RequestMethod.OPTIONS,
+                RequestMethod.POST},
+        allowedHeaders = {"*"})
 public class StoresController {
     @Autowired
     private  StoresService storesService;
