@@ -3,6 +3,7 @@ package com.kazyon.operationsBoard.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,6 +38,7 @@ public class SecurityConfiguration{
             .authorizeHttpRequests()
             .requestMatchers("/api/v1/auth/**")
             .permitAll()
+            .requestMatchers("/v1/stores/**").hasRole("ADMIN")
             .anyRequest()
             .authenticated()
             .and()
@@ -48,4 +50,5 @@ public class SecurityConfiguration{
 
     return http.build();
   }
+
 }
